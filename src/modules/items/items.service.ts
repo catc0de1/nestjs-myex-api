@@ -1,9 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Item } from '@items/item.entity';
-import { CreateItemDto } from '@items/dtos/create-item.dto';
-import { User } from '@users/user.entity';
+import { Item } from '@/modules/items/item.entity';
+import { CreateItemDto } from '@/modules/items/dtos/create-item.dto';
+import { User } from '@/modules/users/user.entity';
 import { QueryItemDto } from './dtos/query-item.dto';
 import { applyFilter } from './query/filter.query';
 

@@ -1,0 +1,4 @@
+To Do:
+
+1. perf: remove unused file/logic like spec in dist
+2. perf: minimize build size into 1 app

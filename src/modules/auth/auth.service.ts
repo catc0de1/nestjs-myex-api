@@ -5,7 +5,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { hash, verify } from 'argon2';
-import { UsersService } from '@users/users.service';
+import { UsersService } from '@/modules/users/users.service';
 
 @Injectable()
 export class AuthService {

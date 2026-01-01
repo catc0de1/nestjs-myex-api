@@ -9,17 +9,17 @@ import {
   Query,
   UseGuards,
 } from '@nestjs/common';
-import { ItemsService } from '@items/items.service';
-import { CreateItemDto } from '@items/dtos/create-item.dto';
-import { Item } from '@items/item.entity';
-import { User } from '@users/user.entity';
-import { AuthGuard } from '@guard/auth.guard';
-import { CurrentSession } from '@auth/decorators/current-session.decorator';
+import { ItemsService } from '@/modules/items/items.service';
+import { CreateItemDto } from '@/modules/items/dtos/create-item.dto';
+import { Item } from '@/modules/items/item.entity';
+import { User } from '@/modules/users/user.entity';
+import { AuthGuard } from '@/guards/auth.guard';
+import { CurrentSession } from '@/modules/auth/decorators/current-session.decorator';
 import { Serialize } from '@/interceptors/serialize.interceptor';
 import { ItemDto } from './dtos/item.dto';
 import { ApproveItemDto } from './dtos/approve-item.dto';
 import { QueryItemDto } from './dtos/query-item.dto';
-import { AdminGuard } from '@guard/admin.guard';
+import { AdminGuard } from '@/guards/admin.guard';
 
 @Controller('items')
 export class ItemsController {

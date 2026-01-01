@@ -7,14 +7,14 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { Serialize } from '@interceptors/serialize.interceptor';
-import { AuthGuard } from '@guard/auth.guard';
-import { CurrentSession } from '@auth/decorators/current-session.decorator';
-import { AuthResponseDto } from '@auth/dtos/auth-response.dto';
-import { CreateUserDto } from '@users/dtos/create-user.dto';
-import { AuthService } from '@auth/auth.service';
-import { LoginUserDto } from '@auth/dtos/login-user.dto';
-import { User } from '@users/user.entity';
+import { Serialize } from '@/interceptors/serialize.interceptor';
+import { AuthGuard } from '@/guards/auth.guard';
+import { CurrentSession } from '@/modules/auth/decorators/current-session.decorator';
+import { AuthResponseDto } from '@/modules/auth/dtos/auth-response.dto';
+import { CreateUserDto } from '@/modules/users/dtos/create-user.dto';
+import { AuthService } from '@/modules/auth/auth.service';
+import { LoginUserDto } from '@/modules/auth/dtos/login-user.dto';
+import { User } from '@/modules/users/user.entity';
 import type { Request } from 'express';
 
 @Controller('auth')

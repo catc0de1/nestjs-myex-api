@@ -5,8 +5,8 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { User } from '@users/user.entity';
 import type { Request } from 'express';
+import type { User } from '@/modules/users/user.entity';
 
 @Injectable()
 export class AdminGuard implements CanActivate {

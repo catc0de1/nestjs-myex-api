@@ -7,7 +7,7 @@ import {
   AfterRemove,
   OneToMany,
 } from 'typeorm';
-import { Item } from '@items/item.entity';
+import { Item } from '@/modules/items/item.entity';
 
 @Entity()
 export class User {

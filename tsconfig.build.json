@@ -5,13 +5,6 @@
   "compilerOptions": {
     "paths": {
       "@/*": ["src/*"],
-      "@users/*": ["src/users/*"],
-      "@items/*": ["src/items/*"],
-      "@auth/*": ["src/auth/*"],
-      "@config/*": ["src/config/*"],
-      "@interceptors/*": ["src/interceptors/*"],
-      "@guard/*": ["src/guard/*"],
-      "@session/*": ["src/session/*"],
     }
   }
 }
