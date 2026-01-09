@@ -16,7 +16,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         database: configService.get<string>('DB_NAME'),
         autoLoadEntities: true,
         logging: false,
-        synchronize: true, // never use TRUE in production!
+        synchronize: configService.get<string>('NODE_ENV') === 'development',
+        // ssl: {
+        //   rejectUnauthorized: configService.get<string>('NODE_ENV') === 'production',
+        // },
       }),
     }),
   ],
