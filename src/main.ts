@@ -1,31 +1,18 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AppModule } from '@/app.module';
-import helmet from 'helmet';
+import { HelmetConfig } from './core/helmet.config';
+import { PipeConfig } from './core/pipe.config';
+import { AppModule } from './app.module';
+
+// import type { NestExpressApplication } from '@nestjs/platform-express';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  app.use(
-    helmet({
-      // contentSecurityPolicy: {
-      //   directives: {
-      //     defaultSrc: ["'self'"],
-      //     frameSrc: ["'self'", 'blob:'],
-      //   },
-      // },
-    }),
-  );
-
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    }),
-  );
-
   const configService = app.get(ConfigService);
+
+  app.use(HelmetConfig);
+  app.useGlobalPipes(PipeConfig());
+
   const port = configService.get<number>('PORT') ?? 3000;
 
   await app.listen(port);
