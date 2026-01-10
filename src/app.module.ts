@@ -4,6 +4,7 @@ import { EnvModule } from './configs/env.module';
 import { RedisModule } from './configs/redis.module';
 import { DatabaseModule } from './configs/database.module';
 import { SessionMiddleware } from './middlewares/session.middleware';
+import { HealthModule } from './modules/health/health.module';
 import { UsersModule } from './modules/users/users.module';
 import { ItemsModule } from './modules/items/items.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -14,6 +15,7 @@ import { AuthModule } from './modules/auth/auth.module';
     DatabaseModule,
     RedisModule,
 
+    HealthModule,
     UsersModule,
     AuthModule,
     ItemsModule,
