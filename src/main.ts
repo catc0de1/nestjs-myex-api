@@ -14,7 +14,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
-  app.use(HelmetConfig);
+  app.use(HelmetConfig());
   app.useGlobalPipes(PipeConfig());
   app.useLogger(LoggerConfig(configService));
   app.enableCors(CorsConfig(configService));
