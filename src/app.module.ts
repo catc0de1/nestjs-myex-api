@@ -1,14 +1,14 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
-import { EnvModule } from './configs/env.module';
-import { LoggerModule } from './configs/logger.module';
-import { RedisModule } from './configs/redis.module';
-import { DatabaseModule } from './configs/database.module';
+import { EnvModule } from './core/env.module';
+import { LoggerModule } from './core/logger.module';
+import { DatabaseModule } from './core/database.module';
+import { RedisModule } from './core/redis.module';
 import { SessionMiddleware } from './middlewares/session.middleware';
 import { HealthModule } from './modules/health/health.module';
 import { UsersModule } from './modules/users/users.module';
-import { ItemsModule } from './modules/items/items.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { ItemsModule } from './modules/items/items.module';
 
 @Module({
   imports: [

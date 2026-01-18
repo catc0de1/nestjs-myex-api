@@ -41,7 +41,6 @@ export class HealthController {
   @HealthCheck()
   async redisCheck(): Promise<HealthCheckResult> {
     return await this.health.check([
-      /* eslint-disable @typescript-eslint/no-unsafe-assignment */
       () =>
         this.redisIndicator.checkHealth('redis', {
           type: 'redis',

@@ -4,9 +4,9 @@ import { Logger } from 'nestjs-pino';
 
 import { AppModule } from './app.module';
 
-import { HelmetConfig } from './core/helmet.config';
-import { PipeConfig } from './core/pipe.config';
-import { CorsConfig } from './core/cors.config';
+import { HelmetConfig } from './configs/helmet.config';
+import { PipeConfig } from './configs/pipe.config';
+import { CorsConfig } from './configs/cors.config';
 
 // import type { NestExpressApplication } from '@nestjs/platform-express';
 

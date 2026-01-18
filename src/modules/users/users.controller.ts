@@ -15,8 +15,9 @@ import { UpdateUserDto } from '@/modules/users/dtos/update-user.dto';
 import { UserDto } from '@/modules/users/dtos/user.dto';
 import { UsersService } from '@/modules/users/users.service';
 import { Serialize } from '@/interceptors/serialize.interceptor';
+
 import type { User } from '@/modules/users/user.entity';
-// lorem
+
 @Controller('users')
 @Serialize(UserDto)
 export class UsersController {
