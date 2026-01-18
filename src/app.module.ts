@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 import { EnvModule } from './configs/env.module';
+import { LoggerModule } from './configs/logger.module';
 import { RedisModule } from './configs/redis.module';
 import { DatabaseModule } from './configs/database.module';
 import { SessionMiddleware } from './middlewares/session.middleware';
@@ -12,6 +13,7 @@ import { AuthModule } from './modules/auth/auth.module';
 @Module({
   imports: [
     EnvModule,
+    LoggerModule,
     DatabaseModule,
     RedisModule,
 
