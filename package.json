@@ -61,7 +61,7 @@
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
     "globals": "^16.0.0",
-    "jest": "^29.7.0",
+    "jest": "^29.7.o0",
     "pino-http": "^11.0.0",
     "pino-prettier": "3.0.1-dev",
     "prettier": "^3.4.2",
