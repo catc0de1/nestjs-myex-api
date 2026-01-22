@@ -22,6 +22,7 @@
   "dependencies": {
     "@liaoliaots/nestjs-redis": "^10.0.0",
     "@liaoliaots/nestjs-redis-health": "^9.0.4",
+    "@nest-lab/throttler-storage-redis": "^1.1.0",
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
