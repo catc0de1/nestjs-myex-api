@@ -32,7 +32,7 @@ export default tseslint.config(
   // Global rules
   {
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-unsafe-argument': 'warn'
     },
@@ -41,7 +41,7 @@ export default tseslint.config(
   {
     files: ['src/**/dtos/*.ts'],
     rules: {
-      '@typescript-eslint/no-unsafe-assigment': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
     },
   },
 );

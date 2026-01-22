@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 import { plainToInstance } from 'class-transformer';
 
 type ClassConstructor<T> = {
-  new (...args: any[]): T;
+  new (...args: unknown[]): T;
 };
 
 // if you want to restrict to only object types

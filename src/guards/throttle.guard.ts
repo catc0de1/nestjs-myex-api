@@ -5,6 +5,7 @@ import type { Request } from 'express';
 
 @Injectable()
 export class ThrottleGuard extends ThrottlerGuard {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected getTracker(req: Record<string, any>): Promise<string> {
     const request = req as Request;
 

@@ -1,12 +1,35 @@
 import { existsSync, rmSync, statSync } from 'fs';
 import { build } from 'esbuild';
+import { execSync } from 'child_process';
 
 const start = Date.now();
+console.log(`\nStart Build:\n`);
+
+function run(cmd, label) {
+  try {
+    execSync(cmd, { stdio: 'inherit' });
+  } catch {
+    console.error(`\n${label} failed`);
+    process.exit(1);
+  }
+}
 
 try {
+  // typescript strict check
+  const TYPE_LABEL = 'TypeScript check';
+  console.log(`\nTypeScript strict checking . . .`);
+  run('pnpm tsc -p tsconfig.build.json --noEmit', TYPE_LABEL);
+  console.log(`${TYPE_LABEL} done`);
+
+  // eslint check
+  // const LINT_LABEL = 'ESLint check';
+  // console.log(`\nLinting with ESLint . . .\n`);
+  // run('pnpm eslint . --max-warnings=0', LINT_LABEL);
+  // console.log(`\n${LINT_LABEL} done`);
+
   if (existsSync('dist')) {
     rmSync('dist', { recursive: true, force: true });
-    console.log('Dist directory cleaned');
+    console.log('\nDist directory cleaned');
   }
 
   await build({
@@ -37,11 +60,10 @@ try {
   });
 
   const duration = ((Date.now() - start) / 1000).toFixed(2);
+  const size = (statSync('dist/main.js').size / 1024).toFixed(2);
 
   console.log(`\nBuild success in ${duration}s`);
   console.log('Output     : dist/main.js');
-
-  const size = (statSync('dist/main.js').size / 1024).toFixed(2);
   console.log(`Bundle size: ${size} KB`);
 } catch (err) {
   console.error('Build failed');
