@@ -15,14 +15,35 @@ type PinoRequest = IncomingMessage & {
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         const isDev = configService.get<string>('NODE_ENV') === 'development';
-        const IGNORED_PATHS = new Set(['/api/health/', '/api/health/db']);
+
+        const IGNORED_STATIC_PATHS = new Set([
+          '/api/health',
+          '/api/health/database',
+          '/api/health/redis',
+        ]);
+        const IGNORED_DYNAMIC_PATHS: RegExp[] = [
+          // /api/items/:uuid
+          /^\/api\/items\/[^/]+$/,
+        ];
 
         return {
           pinoHttp: {
             level: isDev ? 'debug' : 'info',
             autoLogging: {
-              ignore: (req) =>
-                req.method === 'GET' && IGNORED_PATHS.has(req.url ?? ''),
+              enabled: true,
+              ignorePaths: [],
+              ignore: (req) => {
+                if (req.method !== 'GET' || !req.url) return false;
+
+                const { pathname } = new URL(req.url, 'http://localhost');
+                if (!pathname) return false;
+
+                if (IGNORED_STATIC_PATHS.has(pathname)) return true;
+
+                return IGNORED_DYNAMIC_PATHS.some((pattern) =>
+                  pattern.test(pathname),
+                );
+              },
             },
             customLogLevel: (_req, res, err) => {
               if (res.statusCode >= 500 || err) return 'error';
@@ -55,7 +76,7 @@ type PinoRequest = IncomingMessage & {
               : {
                   target: 'pino/file',
                   options: {
-                    destination: '/var/log/smi/app.log',
+                    destination: './log/smi/app.log',
                     mkdir: true,
                   },
                 },
