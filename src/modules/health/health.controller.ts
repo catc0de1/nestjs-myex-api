@@ -1,4 +1,5 @@
 import { Controller, Get, HttpCode } from '@nestjs/common';
+import { SkipThrottle } from '@nestjs/throttler';
 import {
   HealthCheck,
   HealthCheckService,
@@ -10,6 +11,7 @@ import Redis from 'ioredis';
 
 import type { HealthCheckResult } from '@nestjs/terminus';
 
+@SkipThrottle()
 @Controller('health')
 export class HealthController {
   private readonly redis: Redis;

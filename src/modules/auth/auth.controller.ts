@@ -7,6 +7,11 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
+import { Throttle } from '@nestjs/throttler';
+import {
+  SIGNIN_THROTTLE,
+  SIGNUP_THROTTLE,
+} from '@/constants/throttle.constant';
 import { Serialize } from '@/interceptors/serialize.interceptor';
 import { AuthGuard } from '@/guards/auth.guard';
 import { CurrentSession } from '@/modules/auth/decorators/current-session.decorator';
@@ -21,6 +26,7 @@ import type { Request } from 'express';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  @Throttle({ default: SIGNUP_THROTTLE })
   @Post('/register')
   @Serialize(AuthResponseDto)
   async register(@Body() body: CreateUserDto, @Req() req: Request) {
@@ -36,6 +42,7 @@ export class AuthController {
     return { message: 'Register successfully', user };
   }
 
+  @Throttle({ default: SIGNIN_THROTTLE })
   @Post('/login')
   @Serialize(AuthResponseDto)
   async login(@Body() body: LoginUserDto, @Req() req: Request) {
