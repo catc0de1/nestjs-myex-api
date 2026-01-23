@@ -10,4 +10,5 @@ To Do:
 8. (done) chore: create seeder
 9. (done) perf: redis dependency optimation
 10. feat: implement csrf using csrf-csrf
-11. build: implement docker
+11. chore: set eslint as vscode ide
+12. build: implement docker
