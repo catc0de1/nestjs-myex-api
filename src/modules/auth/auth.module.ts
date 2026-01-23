@@ -8,6 +8,7 @@ import { CurrentUserMiddleware } from '@/modules/auth/middlewares/current-user.m
   imports: [UsersModule],
   providers: [AuthService],
   controllers: [AuthController],
+  exports: [AuthService],
 })
 export class AuthModule {
   configure(consumer: MiddlewareConsumer) {

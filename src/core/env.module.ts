@@ -8,7 +8,7 @@ import * as Joi from 'joi';
       isGlobal: true,
       validationSchema: Joi.object({
         PORT: Joi.number().optional(),
-        NODE_ENV: Joi.string().required(),
+        NODE_ENV: Joi.string().valid('development', 'production').required(),
 
         PEPPER_SECRET: Joi.string().required(),
 
@@ -25,6 +25,9 @@ import * as Joi from 'joi';
         SESSION_TTL: Joi.number().required(),
 
         CORS_URL: Joi.string().optional(),
+
+        ADMIN_EMAIL_SEED: Joi.string().email().required(),
+        ADMIN_PASSWORD_SEED: Joi.string().required(),
       }),
     }),
   ],

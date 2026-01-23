@@ -14,6 +14,8 @@
     "start:prod": "node dist/main",
     "type": "tsc -p tsconfig.build.json --noEmit",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "seed:dev": "ts-node --files --project tsconfig.seed.json -r tsconfig-paths/register src/database/seed/seed.ts",
+    "seed:prod": "NODE_ENV=production node dist/database/seed/seed.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",

@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Laptop",
+    "description": "Gaming laptop",
+    "price": 15000000,
+    "location": "Jakarta",
+    "category": "electronics",
+    "approved": true,
+    "userEmail": "john@dev.local"
+  }
+]

@@ -18,13 +18,17 @@ export class AuthService {
     this.pepper = this.configService.get<string>('PEPPER_SECRET')!;
   }
 
+  async createPassword(password: string): Promise<string> {
+    return await hash(password + this.pepper);
+  }
+
   async register(name: string, email: string, password: string) {
     const users = await this.usersService.findAll({ email });
     if (users.length) {
       throw new BadRequestException('Email sudah terdaftar');
     }
 
-    const hashedPassword = await hash(password + this.pepper);
+    const hashedPassword = await this.createPassword(password);
 
     const user = await this.usersService.create(name, email, hashedPassword);
 

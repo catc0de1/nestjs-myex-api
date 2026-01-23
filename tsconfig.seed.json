@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "src/database/seed/**/*",
+    "src/core/**/*",
+    "src/modules/**/*",
+    "src/@types/**/*.d.ts"
+  ],
+}
