@@ -76,7 +76,7 @@ type PinoRequest = IncomingMessage & {
               : {
                   target: 'pino/file',
                   options: {
-                    destination: './log/smi/app.log',
+                    destination: './logs/app.log',
                     mkdir: true,
                   },
                 },
