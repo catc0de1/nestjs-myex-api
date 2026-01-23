@@ -6,7 +6,12 @@
   "compilerOptions": {
     "builder": "tsc",
     "deleteOutDir": true,
-    "assets": [],
+    "assets": [
+      {
+        "include": "assets/**/*",
+        "watchAssets": true
+      }
+    ],
     "watchAssets": false
   }
 }

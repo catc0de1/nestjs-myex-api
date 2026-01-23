@@ -5,7 +5,7 @@ To Do:
 3. (done) feat: rate limiting with @nestjs/throttler
 4. refactor: remove subscribers?
 5. (done) perf: using redis for storage in throttler
-6. feat: make static assets
+6. (done) feat: make static assets
 7. chore: create migration script
 8. chore: create seeder
 9. (done) perf: redis dependency optimation
