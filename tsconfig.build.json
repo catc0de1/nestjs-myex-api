@@ -3,6 +3,7 @@
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"],
   "include": ["src"],
   "compilerOptions": {
+    "declaration": false,
     "paths": {
       "@/*": ["src/*"],
     }
