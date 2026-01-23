@@ -3,10 +3,11 @@ To Do:
 1. (done) perf: remove unused file/logic like spec in dist
 2. (never) perf: minimize build size into 1 app
 3. (done) feat: rate limiting with @nestjs/throttler
-4. refactor: remove subscribers?
+4. (done) refactor: remove lifecycle hooks entity
 5. (done) perf: using redis for storage in throttler
 6. (done) feat: make static assets
 7. chore: create migration script
-8. chore: create seeder
+8. (done) chore: create seeder
 9. (done) perf: redis dependency optimation
-10. build: implement docker
+10. feat: implement csrf using csrf-csrf
+11. build: implement docker
