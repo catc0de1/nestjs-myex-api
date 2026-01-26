@@ -1,14 +1,14 @@
 To Do:
 
-1. (done) perf: remove unused file/logic like spec in dist
-2. (never) perf: minimize build size into 1 app
-3. (done) feat: rate limiting with @nestjs/throttler
-4. (done) refactor: remove lifecycle hooks entity
-5. (done) perf: using redis for storage in throttler
-6. (done) feat: make static assets
-7. chore: create migration script
-8. (done) chore: create seeder
-9. (done) perf: redis dependency optimation
-10. feat: implement csrf using csrf-csrf
-11. chore: set eslint as vscode ide
-12. build: implement docker
+1.  [DONE]   perf    : remove unused file/logic like spec in dist
+2.  [NEVER]  perf    : minimize build size into 1 app
+3.  [DONE]   feat    : rate limiting with @nestjs/throttler
+4.  [DONE]   refactor: remove lifecycle hooks entity
+5.  [DONE]   perf    : using redis for storage in throttler
+6.  [DONE]   feat    : make static assets
+7.  [    ]   chore   : create migration script
+8.  [DONE]   chore   : create seeder
+9.  [DONE]   perf    : redis dependency optimation
+10. [DONE]   feat    : implement csrf using csrf-csrf
+11. [DONE]   chore   : set eslint as vscode ide
+12. [    ]   build   : implement docker

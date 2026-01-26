@@ -24,7 +24,11 @@ import * as Joi from 'joi';
         SESSION_SECRET: Joi.string().required(),
         SESSION_TTL: Joi.number().required(),
 
+        JWT_SECRET: Joi.string().required(),
+
         CORS_URL: Joi.string().optional(),
+
+        CSRF_SECRET: Joi.string().required(),
 
         ADMIN_EMAIL_SEED: Joi.string().email().required(),
         ADMIN_PASSWORD_SEED: Joi.string().required(),
