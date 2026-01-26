@@ -1,35 +1,31 @@
-import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Inject, Injectable, NestMiddleware } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { RedisStore } from 'connect-redis';
-import Redis from 'ioredis';
 import * as session from 'express-session';
+import { REDIS_CLIENT } from '@/constants/redis.constant';
 
 import type { Request, Response, NextFunction } from 'express';
+import type { RedisClientType } from 'redis';
 
 @Injectable()
 export class SessionMiddleware implements NestMiddleware {
-  private sessionMiddleware: ReturnType<typeof session>;
+  private readonly sessionMiddleware: ReturnType<typeof session>;
 
-  constructor(private readonly configService: ConfigService) {
-    const redisClient = new Redis({
-      host: this.configService.get<string>('REDIS_HOST'),
-      port: this.configService.get<number>('REDIS_PORT'),
-      password: this.configService.get<string>('REDIS_PASSWORD'),
-      lazyConnect: true,
-      maxRetriesPerRequest: null,
-    });
+  constructor(
+    private readonly configService: ConfigService,
 
-    redisClient.connect().catch(console.error);
-
+    @Inject(REDIS_CLIENT)
+    private readonly redisClient: RedisClientType,
+  ) {
     const store = new RedisStore({
-      client: redisClient,
+      client: this.redisClient,
       prefix: 'sess:',
       ttl: Math.floor(this.configService.getOrThrow<number>('SESSION_TTL')),
     });
 
     this.sessionMiddleware = session({
       store,
-      secret: this.configService.get<string>('SESSION_SECRET')!,
+      secret: this.configService.getOrThrow<string>('SESSION_SECRET'),
       resave: false,
       saveUninitialized: false,
       rolling: true,
@@ -41,6 +37,7 @@ export class SessionMiddleware implements NestMiddleware {
       },
     });
   }
+
   use(req: Request, res: Response, next: NextFunction) {
     this.sessionMiddleware(req, res, next);
   }

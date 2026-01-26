@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { ThrottlerStorageRedisService } from '@nest-lab/throttler-storage-redis';
-import Redis from 'ioredis';
 
 @Module({
   imports: [
@@ -21,12 +20,7 @@ import Redis from 'ioredis';
         errorMessage: 'Limit Reached, Try Again Later',
 
         storage: new ThrottlerStorageRedisService(
-          new Redis({
-            keyPrefix: 'throttle:',
-            host: config.get<string>('REDIS_HOST'),
-            port: config.get<number>('REDIS_PORT'),
-            password: config.get<string>('REDIS_PASSWORD'),
-          }),
+          `redis://:${config.get<string>('REDIS_PASSWORD')}@${config.get<string>('REDIS_HOST')}:${config.get<number>('REDIS_PORT')}`,
         ),
       }),
     }),
